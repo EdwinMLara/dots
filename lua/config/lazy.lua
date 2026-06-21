@@ -130,7 +130,8 @@ require("lazy").setup({
       -- Keybindings for common searches
       vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
       vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live grep (search text)" })
-      vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Search open buffers" })
+      vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Search open buffers (by name)" })
+      vim.keymap.set("n", "<leader>fs", builtin.current_buffer_fuzzy_find, { desc = "Search text in current buffer" })
     end,
   },
 
