@@ -121,7 +121,7 @@ require("lazy").setup({
 
   {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.8", -- Use specific version for stability
+    version = "^0.2.0", -- Use latest stable version (0.1.8 was incompatible with modern nvim-treesitter)
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       -- Telescope builtin functions

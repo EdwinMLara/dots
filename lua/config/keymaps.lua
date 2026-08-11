@@ -30,6 +30,30 @@ keymap.set(
 keymap.set("n", "<leader>e", ":Ex<CR>", { desc = "Open file explorer" })
 
 -- ========================================================================== --
+-- COMMENT KEYMAPS - Toggle comments                                         --
+-- ========================================================================== --
+
+--[[
+  Neovim has built-in comment toggling (since 0.10):
+  - gcc : Toggle comment on current line (normal mode)
+  - gc  : Toggle comment on selected lines (visual mode)
+
+  Extra convenience mappings using the leader key:
+  - <leader>/ in normal mode: toggle comment on current line
+  - <leader>/ in visual mode: toggle comment on the selection
+]]
+
+-- Toggle comment on current line
+keymap.set("n", "<leader>/", function()
+  vim.cmd("normal! gcc")
+end, { desc = "Toggle comment on line" })
+
+-- Toggle comment on selected lines
+keymap.set("v", "<leader>/", function()
+  vim.cmd("normal! gc")
+end, { desc = "Toggle comment on selection" })
+
+-- ========================================================================== --
 -- SAVE AND QUIT KEYMAPS                                                     --
 -- ========================================================================== --
 
@@ -177,3 +201,6 @@ local function lspattach(bufnr)
   keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- Show error float
   keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts) -- Location list
 end
+
+-- Export lspattach so lsp.lua can require() it
+return { lspattach = lspattach }
