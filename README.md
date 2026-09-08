@@ -276,3 +276,24 @@ Cada archivo en `lua/config/` está comentado extensamente. Para cambiar opcione
 ## Tmux
 
 La configuración de tmux se enlaza automáticamente a `~/.tmux.conf` al ejecutar `install.sh`. Usa `Ctrl-h/j/k/l` para moverte entre panes de tmux y splits de Neovim sin interrupciones.
+
+### Plugins de tmux (TPM)
+
+Los plugins de tmux se gestionan con [TPM](https://github.com/tmux-plugins/tpm), el equivalente a lazy.nvim pero para tmux. `install.sh` lo clona automáticamente en `~/.tmux/plugins/tpm` si no existe.
+
+Luego, dentro de una sesión de tmux, presiona `prefix + I` (mayúscula) para que TPM descargue los plugins declarados en `tmux/tmux.conf`:
+
+| Plugin                               | Propósito                                              |
+|--------------------------------------|--------------------------------------------------------|
+| [tmux-sensible](https://github.com/tmux-plugins/tmux-sensible) | Opciones por defecto razonables para tmux |
+| [tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect) | Guarda y restaura manualmente sesiones, ventanas y panes |
+| [tmux-continuum](https://github.com/tmux-plugins/tmux-continuum) | Autoguardado periódico (cada 15 min) y restauración automática al abrir tmux |
+
+| Atajo               | Acción                                      |
+|---------------------|----------------------------------------------|
+| `prefix + I`        | Instalar plugins declarados en `tmux.conf`    |
+| `prefix + U`        | Actualizar plugins instalados                 |
+| `prefix + Ctrl-s`    | Guardar sesión actual (resurrect)             |
+| `prefix + Ctrl-r`    | Restaurar última sesión guardada (resurrect)  |
+
+Con `tmux-continuum` activo, no es necesario guardar manualmente: la sesión se restaura sola al abrir tmux, incluso si apagaste la pc sin cerrar tmux antes.
